@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"></head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:wght@500&display=swap"
+          rel="stylesheet">
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: linear-gradient(135deg, #044f48, #2a7561);
+        background-size: cover;
+        font-family: "Noto Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        line-height: 1.3;
+        overflow: hidden;
+    }
+    .bg {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        filter: blur(200px);
+        z-index: 1;
+    }
+    .area {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+
+        width: 80vw;
+        height: 70vh;
+        max-height: 500px;
+
+        box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+        background: rgba(0, 0, 0, .5);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        color: #949494;
+    }
+
+    .title {
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        text-align: left;
+        padding: 10px 10px 10px 50px;
+
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+
+        justify-content: space-between;
+
+    }
+    h1 {
+        font-size: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .input {
+        flex: 0 1 40px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        position: relative;
+        border-radius: 0 0 25px 25px;
+
+        & textarea {
+            background: none;
+            border: none;
+            outline: none!important;
+            resize: none;
+            color: #949494;
+            font-size: 18px;
+            height: 28px;
+            margin: 0;
+            padding-right: 20px;
+            width: 70vw;
+        }
+        & textarea:focus {
+            color: #949494;
+        }
+
+        & #chat_btn {
+            position: absolute;
+            z-index: 1;
+            right: 20px;
+            color: #fff;
+
+            width: 70px;
+
+            border: none;
+            background: #04AA6D;
+            font-size: 18px;
+            text-transform: uppercase;
+            line-height: 1;
+            padding: 6px 10px;
+            border-radius: 30px;
+            outline: none!important;
+        }
+    }
+
+    #chat_window {
+        max-height: calc(70vh - 90px);
+        height:auto;
+        overflow-y: auto;
+    }
+
+    #chat_btn:hover {
+        background: rgba(32,92,64,0.8);
+    }
+
+
+    .message-bubble-user{
+        flex: 1 1 auto;
+        color: rgba(116, 117, 117, .5);
+        overflow: hidden;
+        position: relative;
+        width: 95%;
+
+        color:#fff;
+
+        & .message-text {
+            clear: both;
+            float: left;
+            padding: 6px 10px 7px;
+            border-radius: 10px 10px 10px 0;
+            background: rgba(116, 117, 117, .3);
+            font-size: 20px;
+            line-height: 1.4;
+            margin: 8px 0 8px 35px;
+            position: relative;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        }
+    }
+    .message-bubble-ai{
+        flex: 1 1 auto;
+        color: rgba(0,0,0,0);
+        overflow: hidden;
+        position: relative;
+        width: 95%;
+
+        color:#fff;
+
+        & .message-text {
+            clear: both;
+            float: left;
+            padding: 6px 10px 7px;
+            border-radius: 10px 10px 10px 0;
+            background: rgba(0,0,0,0);
+            font-size: 20px;
+            line-height: 1.4;
+            margin: 8px 0 8px 35px;
+            position: relative;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        }
+    }
+
+    .upload-form {
+        position: relative;
+        right: 20px;
+        float: right;
+
+        width: 35%;
+
+        & .upload-button {
+            text-align: center;
+
+            background: #04AA6D;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            width: 28%;
+            float: right;
+
+            padding: 4px;
+        }
+        & .upload-file {
+            display: none;
+        }
+        & label {
+            text-align: center;
+            border-radius: 25px;
+            background-color: #333333;
+            font-size: 20px;
+
+            padding: 4px;
+            width: 35%
+        }
+        & label:hover {
+            cursor: pointer;
+        }
+    }
+
+</style>
+<body>
+    <div>
+        <div class="row">
+            <div>
+                <div class="area">
+                    <div class="title">
+                        <h1>Virtual Doc</h1>
+                        <form class="upload-form" enctype="multipart/form-data" method="POST" action="/ai/upload">
+                            <label> Choose File
+                                <input class="upload-file" type="file" name="file" />
+                            </label>
+                            <input class="upload-button" type="button" value="UPLOAD" />
+                        </form>
+                    </div>
+                    <div id="chat_window"></div>
+                    <div class="input-group input">
+                        <div>
+                            <label>
+                                <textarea id="chat_input" rows="1"></textarea>
+                            </label>
+                        </div>
+                        <button id="chat_btn" type="button">Ask</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {  // wait until DOM is ready for execution
+        let chat_window = $('#chat_window');
+        let chat_btn = $('#chat_btn');
+        let chat_input = $('#chat_input');
+        let file_btn = $('.upload-button');
+
+        function addUserMessage(query) {
+            let messageElement =
+                $(`<div class = "message-bubble-user"><p class = "message-text">${query}</p></div>`);
+            chat_window.append(messageElement);
+            chat_input.val('');
+            chat_window.animate({scrollTop: chat_window.prop('scrollHeight')}, 1500); // scrollHeight is the height of entire chat window
+        }
+
+        function addAIMessage(message) {
+            let messageElement =
+                $(`<div class = "message-bubble-ai"><p class = "message-text">${message}</p></div>`);
+            chat_window.append(messageElement);
+            chat_input.val('');
+            chat_window.animate({scrollTop: chat_window.prop('scrollHeight')}, 1500); // scrollHeight is the height of entire chat window
+        }
+
+        chat_btn.click(function () {
+            let query = chat_input.val();
+            if (query.length === 0) {
+                alert("Cannot Enter Empty Message");
+                return;
+            }
+            chat_btn.attr('disabled', true); // button disabled after submission
+            addUserMessage(query);
+
+            $.ajax({
+                url: '/rag/query',
+                method: 'post',
+                data: JSON.stringify({query: query}),
+                contentType: "application/json; charset=utf-8",
+                success: function (res) {
+                    addAIMessage(res.data.result);
+                    chat_btn.attr('disabled', false);
+                },
+                error: function () {
+                    addAIMessage(`<span>Error Encountered</span>`);
+                    chat_btn.attr('disabled', false);
+                }
+            })
+        });
+
+        file_btn.click(function () {
+            let formData = new FormData();
+            let file = $('.upload-file')[0].files[0];
+            formData.append('file', file);
+
+            $.ajax({
+                url: '/rag/upload',
+                method: 'post',
+                dataType: 'json',
+                contentType: false, // must have
+                processData: false, // must have
+                data: formData,
+                success: function (res) {
+                    console.info(res);
+                    addAIMessage("Upload Success!");
+                },
+                error: function (res) {
+                    console.info(res);
+                    addAIMessage("Upload Success!");
+                },
+            })
+        });
+
+        $(window).on('keydown', function (e) {
+            if (e.which === 13) {
+                chat_btn.click();
+            }
+        });
+    });
+</script>
+</html>
+
+<!-- CITE: https://codepen.io/supah/pen/jqOBqp -->

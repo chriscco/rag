@@ -1,0 +1,18 @@
+[36mINFO[0m[2025-06-04 20:40:51] log booted                                   
+[36mINFO[0m[2025-06-04 20:41:28] log booted                                   
+[36mINFO[0m[2025-06-04 20:55:23] log booted                                   
+[31mFATA[0m[2025-06-04 20:55:43] unable to call API parse "http://api_host:api_port/this_is_an_api_path": invalid port ":api_port" after host 
+[36mINFO[0m[2025-06-04 21:00:39] log booted                                   
+[36mINFO[0m[2025-06-04 21:02:22] log booted                                   
+[36mINFO[0m[2025-06-04 21:02:27] query request: dfsdf                         
+[36mINFO[0m[2025-06-04 21:07:04] log booted                                   
+[36mINFO[0m[2025-06-04 21:07:08] query request: dsfsd                         
+[36mINFO[0m[2025-06-04 21:07:33] log booted                                   
+[36mINFO[0m[2025-06-04 21:07:38] query request: fsdfs                         
+[36mINFO[0m[2025-06-04 21:09:42] log booted                                   
+[36mINFO[0m[2025-06-04 21:09:47] query request: dfsdf                         
+[36mINFO[0m[2025-06-04 21:09:56] log booted                                   
+[36mINFO[0m[2025-06-04 21:10:02] query request: dsfsd                         
+[36mINFO[0m[2025-06-04 21:10:14] log booted                                   
+[36mINFO[0m[2025-06-04 21:10:17] query request: dsfsd                         
+time="2025-06-04 21:35:19" level=info msg="log booted\n"
