@@ -18,3 +18,10 @@ go run main.go
 go build 
 go run main 
 ```
+
+## API 
+```go
+/rag        // homepage
+/rag/query  // send query request to RAG 
+/rag/upload // upload and save file 
+```
