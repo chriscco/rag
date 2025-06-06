@@ -12,7 +12,7 @@ go mod tidy
 Config ```application-dev.yaml``` under ```common/config/``` to adjust server settings based on need. 
 
 Run the server 
-```
+```go 
 go run main.go 
 // or 
 go build 
