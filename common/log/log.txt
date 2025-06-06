@@ -16,3 +16,9 @@
 [36mINFO[0m[2025-06-04 21:10:14] log booted                                   
 [36mINFO[0m[2025-06-04 21:10:17] query request: dsfsd                         
 time="2025-06-04 21:35:19" level=info msg="log booted\n"
+time="2025-06-05 17:20:02" level=info msg="log booted\n"
+time="2025-06-05 17:21:07" level=info msg="log booted\n"
+time="2025-06-05 17:24:27" level=info msg="log booted\n"
+time="2025-06-05 17:24:31" level=fatal msg="unable to save img http: no such file"
+time="2025-06-05 17:25:32" level=info msg="log booted\n"
+time="2025-06-05 17:26:28" level=fatal msg="unable to save img http: no such file"

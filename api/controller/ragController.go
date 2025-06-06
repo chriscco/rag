@@ -33,7 +33,7 @@ func (rc *RagController) Query(c *gin.Context) {
 		return
 	}
 	global.Log.Info("query request: ", request.Query)
-	resp, err := rc.ragService.CallAPI() 
+	resp, err := rc.ragService.CallAPI(c, request.Query) 
 	if err != nil {
 		global.Log.Fatal("unable to call CallAPI ", err) 
 		retcode.Fatal(c, err, "")
@@ -51,5 +51,13 @@ func (rc *RagController) Index(c *gin.Context) {
 // Upload 
 //	@param c 
 func (rc *RagController) Upload(c *gin.Context) {
-	
+	err := rc.ragService.SaveImg(c)
+	if err != nil {
+		global.Log.Fatal("unable to save img ", err) 
+		retcode.Fatal(c, err, "")
+	}
+	response := entity.Response {
+		Result: "upload success",
+	}
+	retcode.Ok(c, response)
 }

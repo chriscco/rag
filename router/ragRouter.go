@@ -17,5 +17,6 @@ func (rr *RagRouter) ApiRouterInit(router *gin.RouterGroup) {
 	{
 		r.GET("/", ragCtrl.Index)
 		r.POST("/query", ragCtrl.Query)
+		r.POST("/upload", ragCtrl.Upload)
 	}
 }
