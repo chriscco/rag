@@ -224,7 +224,7 @@
                 <div class="area">
                     <div class="title">
                         <h1>Virtual Doc</h1>
-                        <form class="upload-form" enctype="multipart/form-data" method="POST" action="/ai/upload">
+                        <form class="upload-form" enctype="multipart/form-data" method="POST" action="/rag/upload">
                             <label> Choose File
                                 <input class="upload-file" type="file" name="file" />
                             </label>
@@ -315,7 +315,7 @@
                 },
                 error: function (res) {
                     console.info(res);
-                    addAIMessage("Upload Success!");
+                    addAIMessage("Upload Failed!");
                 },
             })
         });

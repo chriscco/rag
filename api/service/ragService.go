@@ -20,7 +20,7 @@ type RagServiceImpl struct {
 
 func NewRagService() RagServiceImpl {
 	return RagServiceImpl{
-		imgPath: "./resource/image",
+		imgPath: "resource/image",
 	}
 }
 
@@ -66,7 +66,8 @@ func (rs *RagServiceImpl) SaveImg(c *gin.Context) (error) {
 		os.MkdirAll(rs.imgPath, os.ModePerm)
 	}
 
-	dst := filepath.Join(rs.imgPath, string(time.Now().Unix()))
+	filename := fmt.Sprintf("%d.jpg", time.Now().Unix())
+	dst := filepath.Join(rs.imgPath, filename)
 	if err := c.SaveUploadedFile(file, dst); err != nil {
 		return err 
 	}

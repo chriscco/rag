@@ -1,12 +1,13 @@
 server:
-    port:  8080 
-    level: debug 
+    address: ""
+    port:    8080 
+    level:   debug 
 
 log: 
     level:    debug 
     filepath: ./common/log/log.txt
 
 API: 
-    ApiHost: "api_host"
-    ApiPort: "api_port"
-    ApiPath: "this_is_an_api_path"
+    ApiHost: ""
+    ApiPort: 18080
+    ApiPath: "/diagnose/"
