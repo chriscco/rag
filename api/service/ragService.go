@@ -16,11 +16,13 @@ import (
 
 type RagServiceImpl struct {
 	imgPath string
+	filename string 
 }
 
 func NewRagService() RagServiceImpl {
 	return RagServiceImpl{
 		imgPath: "resource/image",
+		filename: "resource/image", 
 	}
 }
 
@@ -32,9 +34,10 @@ func (rs *RagServiceImpl) CallAPI(c *gin.Context, message string) (string, error
 }
 
 func (rs *RagServiceImpl) requestAPI(api, host, port string, message string) (string, error) {
-	request := map[string]interface{} {
+	global.Log.Info(fmt.Sprintf("sending request: message: %s, imgPath: %s\n", message, rs.filename))
+	request := map[string]any {
 		"message": message, 
-		"imgPath": rs.imgPath, 
+		"imgPath": rs.filename, 
 	}
 	jsonBytes, _ := json.Marshal(request)
 	reqBody := bytes.NewBuffer(jsonBytes) 
@@ -71,5 +74,6 @@ func (rs *RagServiceImpl) SaveImg(c *gin.Context) (error) {
 	if err := c.SaveUploadedFile(file, dst); err != nil {
 		return err 
 	}
+	rs.filename = fmt.Sprintf("%s/%s", rs.imgPath, filename) 
 	return nil 
 }
